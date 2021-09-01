@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.deneme.MyBean;
 import com.training.spring.di.IGreet;
 
 @RestController
@@ -18,9 +19,17 @@ public class MyFirstRest {
     //@Qualifier("prof")
     private IGreet greet;
 
+    @Autowired
+    private MyBean mBean;
+
     @GetMapping("/hello")
     public String hello() {
         return this.greet.greet("osman");
+    }
+
+    @GetMapping("/hello2")
+    public String hello2() {
+        return this.mBean.hello();
     }
 
 }
