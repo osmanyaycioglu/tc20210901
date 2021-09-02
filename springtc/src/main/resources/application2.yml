@@ -1,0 +1,32 @@
+app:
+  prop: 
+    count: 4
+    current-language:
+      desc: ingilizce
+      name: English
+      short-name: eng
+    language: jp
+    language-description:
+      eng: English
+      esp: Spanish
+      jp: Japanese
+      tr: Turkish
+      xyz: 'Deneme '
+    language-list:
+    - eng
+    - tr
+    - esp
+    - jp
+    language-map:
+      eng:
+        desc: ingilizce
+        name: English
+        short-name: eng
+      tr:
+        desc: turkce
+        name: Turkish
+        short-name: tr
+server:
+  http2:
+    enabled: false
+  port: 9090

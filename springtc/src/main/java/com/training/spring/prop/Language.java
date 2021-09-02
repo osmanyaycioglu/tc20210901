@@ -11,24 +11,27 @@ public class Language {
         return this.name;
     }
 
-    public void setName(final String nameParam) {
+    public Language setName(final String nameParam) {
         this.name = nameParam;
+        return this;
     }
 
     public String getShortName() {
         return this.shortName;
     }
 
-    public void setShortName(final String shortNameParam) {
+    public Language setShortName(final String shortNameParam) {
         this.shortName = shortNameParam;
+        return this;
     }
 
     public String getDesc() {
         return this.desc;
     }
 
-    public void setDesc(final String descParam) {
+    public Language setDesc(final String descParam) {
         this.desc = descParam;
+        return this;
     }
 
     @Override

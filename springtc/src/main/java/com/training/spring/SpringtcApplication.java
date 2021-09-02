@@ -33,9 +33,9 @@ public class SpringtcApplication {
     }
 
     public static void main(final String[] args) {
-        //        System.getProperties()
-        //              .setProperty("",
-        //                           lang);
+        System.getProperties()
+              .setProperty("file.encoding",
+                           "UTF-8");
         ConfigurableApplicationContext context = SpringApplication.run(SpringtcApplication.class,
                                                                        args);
 
