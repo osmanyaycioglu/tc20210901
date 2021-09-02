@@ -1,11 +1,19 @@
 package com.training.spring.person.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+@Entity
 public class Person {
+
+    @Id
+    @GeneratedValue
+    private Long    perId;
 
     @NotEmpty
     @Size(min = 2, max = 20)
@@ -57,5 +65,13 @@ public class Person {
 
     public void setHeight(final Integer heightParam) {
         this.height = heightParam;
+    }
+
+    public Long getPerId() {
+        return this.perId;
+    }
+
+    public void setPerId(final Long perIdParam) {
+        this.perId = perIdParam;
     }
 }
