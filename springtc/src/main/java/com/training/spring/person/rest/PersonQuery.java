@@ -1,8 +1,13 @@
 package com.training.spring.person.rest;
 
+import java.security.Principal;
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,7 +34,18 @@ public class PersonQuery {
     }
 
     @GetMapping("/get/all")
+    @PreAuthorize("hasAnyRole('VIEWER')")
     public List<Person> getAll() {
+        return this.ps.getAll();
+    }
+
+    @GetMapping("/get/all2")
+    public List<Person> getAll2(final Principal principal) {
+        UsernamePasswordAuthenticationToken userLoc = (UsernamePasswordAuthenticationToken) principal;
+        Collection<GrantedAuthority> authoritiesLoc = userLoc.getAuthorities();
+        System.out.println("Auth group : " + authoritiesLoc);
+        String nameLoc = principal.getName();
+        System.out.println(nameLoc);
         return this.ps.getAll();
     }
 

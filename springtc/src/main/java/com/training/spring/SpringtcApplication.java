@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
@@ -19,6 +20,7 @@ import com.training.spring.di.IGreet;
 //})
 @SpringBootApplication
 @EnableScheduling
+@ServletComponentScan
 @Import(MyConfig.class)
 @PropertySource("classpath:my.properties")
 public class SpringtcApplication {
