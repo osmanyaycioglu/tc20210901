@@ -1,14 +1,20 @@
 package com.training.spring.person.model;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @Entity
+@Table(name = "kisi")
 public class Person {
 
     @Id
@@ -17,6 +23,7 @@ public class Person {
 
     @NotEmpty
     @Size(min = 2, max = 20)
+    @Column(name = "isim", nullable = false, length = 50)
     private String  name;
     @NotEmpty
     @Size(min = 3, max = 20)
@@ -26,6 +33,9 @@ public class Person {
     private Integer age;
     private Integer weight;
     private Integer height;
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Address address;
 
     public String getName() {
         return this.name;
@@ -73,5 +83,13 @@ public class Person {
 
     public void setPerId(final Long perIdParam) {
         this.perId = perIdParam;
+    }
+
+    public Address getAddress() {
+        return this.address;
+    }
+
+    public void setAddress(final Address addressParam) {
+        this.address = addressParam;
     }
 }
