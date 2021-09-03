@@ -5,9 +5,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.TableGenerator;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
@@ -15,10 +17,15 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "kisi")
+@TableGenerator(name = "generate_id",
+                pkColumnName = "uid",
+                pkColumnValue = "person",
+                initialValue = 0,
+                allocationSize = 1)
 public class Person {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "generate_id")
     private Long    perId;
 
     @NotEmpty

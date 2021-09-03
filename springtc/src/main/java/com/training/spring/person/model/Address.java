@@ -2,13 +2,20 @@ package com.training.spring.person.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.TableGenerator;
 
 @Entity
+@TableGenerator(name = "generate_id",
+                pkColumnName = "uid",
+                pkColumnValue = "address",
+                initialValue = 0,
+                allocationSize = 1)
 public class Address {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "generate_id")
     private Long   addId;
 
     private String city;
